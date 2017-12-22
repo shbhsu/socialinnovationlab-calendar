@@ -1,0 +1,79 @@
+body {
+    font-family: "Microsoft JhengHei";
+    min-width: 320px;
+    width: auto !important;
+}
+
+.calenderRed {
+    background: url(images/calender_1.png) no-repeat center;
+    background-size: cover;
+    text-align: center;
+    width: 100%;
+    height: 256px;
+    margin: 0 auto;
+}
+
+.calenderGreen {
+    background: url(images/calender_2.png) no-repeat center;
+    background-size: cover;
+    text-align: center;
+    width: 100%;
+    height: 256px;
+    margin: 0 auto;
+}
+
+.calenderList {
+    display: block;
+}
+
+.calenderContent {
+    padding-top: 55px;
+}
+
+.calenderTitle {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.calenderDate {
+    padding: 5px;
+    padding-top: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.calenderSubtitle {
+    padding: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.red {
+    color: red;
+}
+
+
+
+
+
+
+/* Small devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+    .calenderRed {
+        width: 300px;
+    }
+
+    .calenderGreen {
+        width: 300px;
+    }
+
+    .calenderContent {
+        padding-top: 48px;
+    }
+
+    .calenderDate {
+        padding-top: 44px;
+        font-size: 46px;
+    }
+}

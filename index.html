@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw">
+
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>唐鳳都在這</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+
+
+    <script>
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <main role="main">
+        <div class="container" style="padding:10px;">
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    <h1 style="font-weight: bold;">每周三早上10點-下午2點 唐鳳都在這裡</h1>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    <img style="width:80%;" src="stylesheets/images/社會創新實驗室.jpg">
+                </div>
+
+            </div>
+            <hr />
+
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div id="calenderList">
+                            <section id="calender" v-for="calender in calenders" v-bind:key="calender.id" class="col-md-3 col-sm-4 col-xs-12">
+                                <div :class="calender.cls">
+                                    <div class="calenderContent">
+                                        <div class="calenderTitle">{{calender.title}}</div>
+                                        <div class="calenderDate">{{calender.date}}</div>
+                                        <div class="calenderSubtitle">{{calender.subtitle}}</div>
+                                    </div>
+                                </div>
+                            </section>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr />
+        </div>
+    </main>
+
+
+    <script>
+
+
+        var calender = new Vue({
+            el: '#calenderList',
+            data() {
+                return {
+                    calenders: []
+                }
+            }
+            ,
+            created: function () {
+
+                for (i = 0; i < 6; i++) {
+                    let objCalender = { title: "唐鳳都在這", date: "12/31(三)", subtitle: "10:00～14:00", cls: "calenderGreen" }
+                    this.calenders.push(objCalender)
+                    objCalender = { title: "另有公務行程", date: "12/31(三)", subtitle: "另有公務行程", cls: "calenderRed" }
+                    this.calenders.push(objCalender)
+                }
+
+
+            }
+        })
+
+    </script>
+
+
+</body>
+
+</html>
