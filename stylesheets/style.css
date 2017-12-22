@@ -58,14 +58,14 @@ body {
 
 
 
-/* Small devices (tablets, 768px and down) */
-@media (max-width: 768px) {
+/* Small devices (tablets, 991px and down) */
+@media (max-width: 991px) {
     .calenderRed {
-        width: 300px;
+        width: 280px;
     }
 
     .calenderGreen {
-        width: 300px;
+        width: 280px;
     }
 
     .calenderContent {
@@ -73,7 +73,7 @@ body {
     }
 
     .calenderDate {
-        padding-top: 44px;
-        font-size: 46px;
+        padding-top: 42px;
+        font-size: 44px;
     }
 }
