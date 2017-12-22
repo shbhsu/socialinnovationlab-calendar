@@ -48,22 +48,16 @@
             </div>
             <hr />
 
-            <div class="row">
-
-                <div class="col-12">
-                    <div id="calenderList" class="row">
-                        <section id="calender" v-for="calender in calenders" v-bind:key="calender.id" class="col-sm-6 col-lg-3 col-12 ">
-                            <div :class="calender.cls">
-                                <div class="calenderContent">
-                                    <div class="calenderTitle">{{calender.title}}</div>
-                                    <div class="calenderDate">{{calender.date}}</div>
-                                    <div class="calenderSubtitle">{{calender.subtitle}}</div>
-                                </div>
-                            </div>
-                        </section>
+            <div id="calenderList" class="row">
+                <section id="calender" v-for="calender in calenders" v-bind:key="calender.id" class="col-sm-6 col-lg-3 col-12 left" style="padding: 0px;">
+                    <div :class="calender.cls">
+                        <div class="calenderContent">
+                            <div class="calenderTitle">{{calender.title}}</div>
+                            <div class="calenderDate">{{calender.date}}</div>
+                            <div class="calenderSubtitle">{{calender.subtitle}}</div>
+                        </div>
                     </div>
-                </div>
-
+                </section>
             </div>
 
             <hr />
