@@ -70,11 +70,22 @@
 
                     <hr />
                 </div>
+             
+                    <div class="col-12" >
+                        <div id="updateDT" style="float:right;" > 最後更新時間：{{ updateDT }}</div>
+                    </div>
+              
     </main>
 
 
     <script>
 
+        var vm = new Vue({
+            el: '#updateDT',
+            data: {
+                updateDT: new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate()+" "+new Date().getHours()+":00"
+            }
+        })
 
         var calender = new Vue({
             el: '#calenderList',
@@ -88,22 +99,21 @@
 
                 axios.get('https://aucal.pdis.nat.gov.tw/auCal').then(res => {
                     let dayList = getWednesday(3);
- 
                     var pointer = 0;
                     dayList.forEach(element => {
 
-                        var date =("0"+(element.getMonth()+1)).slice(-2)+"/"+("0"+element.getDate()).slice(-2);//MM/dd
-                        var auDate = ("0"+(new Date(res.data.items[pointer].start).getMonth()+1)).slice(-2)+"/"+("0"+new Date(res.data.items[pointer].start).getDate()).slice(-2);
+                        var date = ("0" + (element.getMonth() + 1)).slice(-2) + "/" + ("0" + element.getDate()).slice(-2);//MM/dd
+                        var auDate = ("0" + (new Date(res.data.items[pointer].start).getMonth() + 1)).slice(-2) + "/" + ("0" + new Date(res.data.items[pointer].start).getDate()).slice(-2);
                         if (auDate === (date)) {
                             var startDT = new Date(res.data.items[pointer].start);
                             var endDT = new Date(res.data.items[pointer].end);
                             var datetime = ("0" + startDT.getHours()).slice(-2) + ":" + ("0" + startDT.getMinutes()).slice(-2) + "～" + ("0" + endDT.getHours()).slice(-2) + ":" + ("0" + endDT.getMinutes()).slice(-2);
-                            let objCalender = { title: "唐鳳都在這", date: date+"(三)", subtitle: datetime, cls: "calenderGreen" }
+                            let objCalender = { title: "唐鳳都在這", date: date + "(三)", subtitle: datetime, cls: "calenderGreen" }
                             this.calenders.push(objCalender);
                             pointer++;
                         }
                         else {
-                            let objCalender = { title: "另有公務行程", date:  date+"(三)", subtitle: "另有公務行程", cls: "calenderRed" }
+                            let objCalender = { title: "另有公務行程", date: date + "(三)", subtitle: "另有公務行程", cls: "calenderRed" }
                             this.calenders.push(objCalender);
                         }
                     });
@@ -114,6 +124,8 @@
 
             }
         })
+
+
 
 
         function getWednesday(monthCount) {
