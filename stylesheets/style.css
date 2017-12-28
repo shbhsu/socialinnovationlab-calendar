@@ -68,12 +68,8 @@ body {
         width: 280px;
     }
 
-    .calenderContent {
-        padding-top: 48px;
-    }
 
     .calenderDate {
-        padding-top: 42px;
         font-size: 44px;
     }
 }

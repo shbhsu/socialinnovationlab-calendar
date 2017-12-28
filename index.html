@@ -10,15 +10,18 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-
     <!--bootstrap-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
 
 
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="stylesheets/style.css">
 
 
@@ -34,34 +37,38 @@
 <body>
     <main role="main">
         <div class="container" style="padding:10px;">
-            <div class="row">
+            <div class="row" style="padding-top:10px;">
                 <div class="col-12" style="text-align:center;">
-                    <h1 style="font-weight: bold;">每周三早上10點-下午2點 唐鳳都在這裡</h1>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-12" style="text-align:center;">
-                    <img style="width:80%;" src="stylesheets/images/社會創新實驗室.jpg">
-                </div>
+                    <div style="font-weight: bold;font-size:50px;">不須預約，直接前來即可！</h1>
+                    </div>
+                    <div class="col-12" style="text-align:center;">
 
-            </div>
-            <hr />
-
-            <div id="calenderList" class="row">
-                <section id="calender" v-for="calender in calenders" v-bind:key="calender.id" class="col-sm-6 col-lg-3 col-12 left" style="padding: 0px;">
-                    <div :class="calender.cls">
-                        <div class="calenderContent">
-                            <div class="calenderTitle">{{calender.title}}</div>
-                            <div class="calenderDate">{{calender.date}}</div>
-                            <div class="calenderSubtitle">{{calender.subtitle}}</div>
+                        <div style="font-weight: bold;font-size: 36px;">每周三早上10點-下午2點 唐鳳都在這裡</h1>
                         </div>
                     </div>
-                </section>
-            </div>
 
-            <hr />
-        </div>
+                    <div class="row" style="padding-top:30px;">
+                        <div class="col-12" style="text-align:center;">
+                            <img style="width:80%;" src="stylesheets/images/社會創新實驗室.jpg">
+                        </div>
+
+                    </div>
+                    <hr />
+
+                    <div id="calenderList" class="row">
+                        <section id="calender" v-for="calender in calenders" v-bind:key="calender.id" class="col-sm-6 col-lg-3 col-12 left" style="padding: 0px;">
+                            <div :class="calender.cls">
+                                <div class="calenderContent">
+                                    <div class="calenderTitle">{{calender.title}}</div>
+                                    <div class="calenderDate">{{calender.date}}</div>
+                                    <div class="calenderSubtitle">{{calender.subtitle}}</div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <hr />
+                </div>
     </main>
 
 
@@ -78,16 +85,58 @@
             ,
             created: function () {
 
-                for (i = 0; i < 6; i++) {
-                    let objCalender = { title: "唐鳳都在這", date: "12/31(三)", subtitle: "10:00～14:00", cls: "calenderGreen" }
-                    this.calenders.push(objCalender)
-                    objCalender = { title: "另有公務行程", date: "12/31(三)", subtitle: "另有公務行程", cls: "calenderRed" }
-                    this.calenders.push(objCalender)
-                }
+                axios.get('https://aucal.pdis.nat.gov.tw/auCal').then(res => {
+                    let dayList = getWednesday(3);
+ 
+                    var pointer = 0;
+                    dayList.forEach(element => {
+
+                        var date = element.toLocaleDateString();//yyyy/MM/dd
+                        var resaultDate = date.split('/')[1] + "/" + date.split('/')[2] + "(三)";
+                        var auDate = new Date(res.data.items[pointer].start).toLocaleDateString();
+                        if (auDate === (date)) {
+                            var startDT = new Date(res.data.items[pointer].start);
+                            var endDT = new Date(res.data.items[pointer].end);
+                            var datetime = ("0" + startDT.getHours()).slice(-2) + ":" + ("0" + startDT.getMinutes()).slice(-2) + "～" + ("0" + endDT.getHours()).slice(-2) + ":" + ("0" + endDT.getMinutes()).slice(-2);
+                            let objCalender = { title: "唐鳳都在這", date: resaultDate, subtitle: datetime, cls: "calenderGreen" }
+                            this.calenders.push(objCalender);
+                            pointer++;
+                        }
+                        else {
+                            let objCalender = { title: "另有公務行程", date: resaultDate, subtitle: "另有公務行程", cls: "calenderRed" }
+                            this.calenders.push(objCalender);
+                        }
+                    });
+
+
+                })
 
 
             }
         })
+
+
+        function getWednesday(monthCount) {
+            var d = new Date(),
+                month = d.getMonth(),
+                Wednesdays = [];
+
+            d.setDate(1);
+            // Get the first Wednesday in the month
+            while (d.getDay() !== 3) {
+                d.setDate(d.getDate() + 1);
+            }
+            var tmpd = new Date();
+            tmpd.setMonth(tmpd.getMonth() + monthCount);
+            var endmonth = tmpd.getMonth();
+
+            // Get all the other Wednesday in the month
+            while (d.getMonth() !== endmonth) {
+                Wednesdays.push(new Date(d.getTime()));
+                d.setDate(d.getDate() + 7);
+            }
+            return Wednesdays;
+        }
 
     </script>
 
