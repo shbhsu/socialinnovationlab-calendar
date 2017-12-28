@@ -91,18 +91,24 @@
                     var pointer = 0;
                     dayList.forEach(element => {
 
+<<<<<<< HEAD
                         var date =("0"+(element.getMonth()+1)).slice(-2)+"/"+("0"+element.getDate()).slice(-2);//MM/dd
                         var auDate = ("0"+(new Date(res.data.items[pointer].start).getMonth()+1)).slice(-2)+"/"+("0"+new Date(res.data.items[pointer].start).getDate()).slice(-2);
+=======
+                        var date = element.toLocaleDateString();//yyyy/MM/dd
+                        var resaultDate = date.split('/')[1] + "/" + date.split('/')[2] + "(三)";
+                        var auDate = new Date(res.data.items[pointer].start).toLocaleDateString();
+>>>>>>> parent of f433029... fix date bug
                         if (auDate === (date)) {
                             var startDT = new Date(res.data.items[pointer].start);
                             var endDT = new Date(res.data.items[pointer].end);
                             var datetime = ("0" + startDT.getHours()).slice(-2) + ":" + ("0" + startDT.getMinutes()).slice(-2) + "～" + ("0" + endDT.getHours()).slice(-2) + ":" + ("0" + endDT.getMinutes()).slice(-2);
-                            let objCalender = { title: "唐鳳都在這", date: date+"(三)", subtitle: datetime, cls: "calenderGreen" }
+                            let objCalender = { title: "唐鳳都在這", date: resaultDate, subtitle: datetime, cls: "calenderGreen" }
                             this.calenders.push(objCalender);
                             pointer++;
                         }
                         else {
-                            let objCalender = { title: "另有公務行程", date:  date+"(三)", subtitle: "另有公務行程", cls: "calenderRed" }
+                            let objCalender = { title: "另有公務行程", date: resaultDate, subtitle: "另有公務行程", cls: "calenderRed" }
                             this.calenders.push(objCalender);
                         }
                     });
